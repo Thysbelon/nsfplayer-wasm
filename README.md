@@ -11,7 +11,7 @@ Download the source of game-music-emu from its bitbucket repository. Follow the 
 
 If you get errors like "gme_ay_type undefined, gme_gbs_type undefined...", you have to either edit blargg_config.h or the type_list function in gme.cpp.
 
-Then, build the wasm and js with `emcc -O3 -I./game-music-emu/gme ../game-music-emu/build/gme/libgme.a main.c -o nsfplayerO3-mono.js -sEXPORTED_RUNTIME_METHODS=ccall,cwrap,getValue`
+Then, build the wasm and js with `emcc -O3 -I./game-music-emu/gme ./game-music-emu/build/gme/libgme.a main.c -o nsfplayerO3-mono.js -sEXPORTED_RUNTIME_METHODS=ccall,cwrap,getValue`
 
 Stereo functionality is implemented by using a copy of the library that has been [hard coded to hard pan the two 2A03 square channels left and right](https://github.com/mmontag/chip-player-js/commit/839b9c27aa994b21e987a11c0ab5c6f9db5a5a67).
 
