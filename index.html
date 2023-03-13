@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+<script src=nsfplayerO3-mono.js></script> <!-- If you want to play in stereo, change "mono" to "stereo" -->
+<script src=nsfplay-function.js></script>
+</head>
+<body>
+<button id=nsfplaybut>start</button>
+<script>
+"use strict";
+document.getElementById("nsfplaybut").addEventListener("click",myclick,{once:true})
+
+function myclick(){
+	nsfplay("Akumajou Densetsu (VRC6).nsfe",0);
+}
+
+
+</script>
