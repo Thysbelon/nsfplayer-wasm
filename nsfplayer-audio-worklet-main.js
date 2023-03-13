@@ -1,9 +1,7 @@
 // the below file should be used in a post-js argument to emscripten.
 
 var playNSF=Module.cwrap("playNSF", "number", null);
-const INT16_MAX = 65535;
-const INT32_MAX = 2147483647;
-let bufReadCount=16;
+//let bufReadCount=16;
 var bufPtr
 class NSFPlayer extends AudioWorkletProcessor {
 	constructor(options) {
@@ -14,7 +12,7 @@ class NSFPlayer extends AudioWorkletProcessor {
 			"setupNSF",
 			"number",
 			["array", "number", "number", "number"],
-			[setupArgs.data, setupArgs.dataLength, 128*2, setupArgs.tracknum/* track number */]
+			[setupArgs.data, setupArgs.dataLength, 128, setupArgs.tracknum/* track number */]
 		)
 	}
 
@@ -39,7 +37,7 @@ class NSFPlayer extends AudioWorkletProcessor {
 				let int16sample = Module.getValue( bufPtr+i * 2 * channelCount + /* frame offset * bytes per sample * num channels + */ channel * 2  /* channel offset * bytes per sample */, 'i16')
 				let float32sample = (int16sample >= 0x8000) ? -(0x10000 - int16sample) / 0x8000 : int16sample / 0x7FFF;
 				output[channel][i]=float32sample
-				// I'm doing everything right and it still sounds awful
+				// I don't know why it's garbled
 			}
 		}
 	
