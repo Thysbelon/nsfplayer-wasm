@@ -1,5 +1,5 @@
 # nsfplayer-wasm
-Play a single NSF file in the browser and loop infinitely.
+Play a single NSF/NSFe file track in the browser and loop infinitely.
 
 You can see a demonstration in index.html.
 
