@@ -5,7 +5,6 @@ async function nsfplay(url, tracknum, settingsObject /*contains introEnd (millis
 	NOTE ON panningObject AND THE N163 AND FAMISTUDIO
 	If you make a song in famistudio while only using some of the 8 Wave channels, the channels used in the exported nsf may be different. For example, a song that uses only two wave channels will have Wave 1 and Wave 2 mapped to Wave 8 and Wave 7 respectively when exported to nsf.
 	*/
-	// to do, don't render each track separately if there is no panningObject DONE. to do: only separate tracks specified in panningObject
 	// to do, use wasm workers or something to do smart multi threading
 	if (settingsObject) {
 		if (settingsObject.panningObject) {
