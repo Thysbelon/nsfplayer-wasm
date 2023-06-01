@@ -4,7 +4,7 @@
 <title>NSF-Player-WASM</title>
 <meta name=color-scheme content="dark light">
 <meta name=viewport content=width=device-width,initial-scale=1.0>
-<script src=minified-assets/nsfplayer-mono-stereo.js></script> <!-- breaks and gives the error message "argTypes.every is not a function" if *any* compiler optimizations are enabled. -->
+<script src=assets/nsfplayer-mono-stereo.js></script> <!-- breaks and gives the error message "argTypes.every is not a function" if *any* -O flags above 0 are set. -->
 <script src=nsfplay-function.js></script>
 <link rel="preconnect" href="https://fonts.bunny.net">
 <style>
@@ -64,7 +64,7 @@ function myclick(){
 	this.innerHTML="Playing..."
 	nsfplaybut2.setAttribute("disabled", "")
 	nsfplaybut2.innerHTML="Refresh to enable"
-	nsfplay("minified-assets/Akumajou Densetsu (VRC6).nsfe",0);
+	nsfplay("assets/Akumajou Densetsu (VRC6).nsfe",0);
 }
 
 var nsfplaybut2=document.getElementById("nsfplaybut2")
@@ -74,7 +74,7 @@ function myclick2(){
 	this.innerHTML="Playing..."
 	nsfplaybut.setAttribute("disabled", "")
 	nsfplaybut.innerHTML="Refresh to enable"
-	nsfplay("minified-assets/liquid-sunshine.nsfe",0,{introEnd:1331, panningObject:{"Square 1":-1,"Square 2":1,"Wave 8":-0.5,"Wave 7":0.5} }); // takes 1 secs on pc on no workers 5/3/2023 stereo-mono. takes 4 secs on mobile
+	nsfplay("assets/liquid-sunshine.nsfe",0,{introEnd:1331, panningObject:{"Square 1":-1,"Square 2":1,"Wave 8":-0.5,"Wave 7":0.5} }); // takes 1 secs on pc on no workers 5/3/2023 stereo-mono. takes 4 secs on mobile
 	//nsfplay("test-nsf/test2.nsfe",0,0,{"Square 1":-1,"Square 2":1,"Wave 8":-0.5,"Wave 7":0.5});
 }
 </script>
