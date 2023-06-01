@@ -1,7 +1,7 @@
 # nsfplayer-wasm
 Play a single NSF/NSFe file track in the browser and loop infinitely. (Currently, the app relies on NSFe's length property to work)
 
-You can see a demonstration in index.html.
+Please look at the webpage in the docs folder to learn how to use nsfplayer-wasm.
 
 **The audio worklet functionality is non-functional.** It is part of this repository in case anyone wants to make a pull request.
 
