@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+<meta charset=utf-8>
+<title>NSF-Player-WASM</title>
+<meta name=color-scheme content="dark light">
+<meta name=viewport content=width=device-width,initial-scale=1.0>
+<script src=minified-assets/nsfplayer-mono-stereo.js></script> <!-- breaks and gives the error message "argTypes.every is not a function" if *any* compiler optimizations are enabled. -->
+<script src=nsfplay-function.js></script>
+<link rel="preconnect" href="https://fonts.bunny.net">
+<style>
+@font-face {
+	font-family: 'Alegreya Sans SC';
+	font-style: normal;
+	font-weight: bold;
+	src: url(https://fonts.bunny.net/dotgothic16/files/dotgothic16-latin-400-normal.woff2) format('woff2'), url(https://fonts.bunny.net/dotgothic16/files/dotgothic16-latin-400-normal.woff) format('woff'); 
+}
+:root {
+	--cream:#EFDB9C;
+	--maroon:#591117;
+}
+body {
+	background: var(--maroon);
+	color: var(--cream);
+	/*max-width:44em;*/
+}
+@media (prefers-color-scheme:light) {
+	body {
+		background: var(--cream);
+		color: var(--maroon);
+	}
+}
+h1{
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+p{
+	max-width:44em;
+}
+img {
+	image-rendering:pixelated;
+	width:100%;
+	object-fit:fill;
+	aspect-ratio:calc(var(--w)*8)/calc(var(--h)*7);
+	--w:nothing;
+	--h:nothing;
+	float:right;
+	max-width:70vh;
+}
+</style>
+</head>
+<body>
+<h1>NSF-Player-WASM</h1>
+<img src=art.png style=--w:256;--h:240>
+<p>A JavaScript and WebAssembly program to easily play NSFe files (which contain Famicom and NES music) in the browser. <a href=https://github.com/Thysbelon/nsfplayer-wasm>GitHub repository</a>
+<p>Synthesizing music from NSFe files instead of playing a compressed audio file allows you to have both small file size <em>and</em> quality.
+<p>Put the nsfplayer-mono-stereo.js Emscripten runtime and nsfplay-function.js in the head of your HTML document. From a click event, simply call <code>nsfplay()</code> with the name of your NSFe file and the number of the track you wish to play as arguments. Please view the source of this page for an example.
+<p><button id=nsfplaybut>Play a song in mono that doesn't loop</button>
+<p><button id=nsfplaybut2>Play a song in stereo that loops infinitely</button>
+<script>
+"use strict";
+var nsfplaybut=document.getElementById("nsfplaybut")
+nsfplaybut.addEventListener("click",myclick,{once:true})
+
+function myclick(){
+	this.innerHTML="Playing..."
+	nsfplaybut2.setAttribute("disabled", "")
+	nsfplaybut2.innerHTML="Refresh to enable"
+	nsfplay("minified-assets/Akumajou Densetsu (VRC6).nsfe",0);
+}
+
+var nsfplaybut2=document.getElementById("nsfplaybut2")
+nsfplaybut2.addEventListener("click",myclick2,{once:true})
+
+function myclick2(){
+	this.innerHTML="Playing..."
+	nsfplaybut.setAttribute("disabled", "")
+	nsfplaybut.innerHTML="Refresh to enable"
+	nsfplay("minified-assets/liquid-sunshine.nsfe",0,{introEnd:1331, panningObject:{"Square 1":-1,"Square 2":1,"Wave 8":-0.5,"Wave 7":0.5} }); // takes 1 secs on pc on no workers 5/3/2023 stereo-mono. takes 4 secs on mobile
+	//nsfplay("test-nsf/test2.nsfe",0,0,{"Square 1":-1,"Square 2":1,"Wave 8":-0.5,"Wave 7":0.5});
+}
+</script>
