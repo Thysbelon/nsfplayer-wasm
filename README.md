@@ -1,3 +1,6 @@
+## Notice
+This program has been superseded by [Web-GME-Player](https://github.com/Thysbelon/Web-GME-Player).
+
 # nsfplayer-wasm
 Play a single NSF/NSFe file track in the browser and loop infinitely. (Currently, the app relies on NSFe's length property to work)
 
